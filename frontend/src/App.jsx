@@ -150,7 +150,7 @@ function App() {
                         </div>
                     </aside>
 
-                    // main content that is to be rendered (dashboard)
+                    {/* main content that is to be rendered (dashboard) */}
 
                     <main className="main">
                         {page === 'dashboard' && (
