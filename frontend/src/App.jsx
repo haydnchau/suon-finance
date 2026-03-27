@@ -94,19 +94,19 @@ function App() {
                                     Dashboard
                                 </p>
 
-                                <p
+                                {/* <p
                                     className={page === 'accounts' ? 'active' : ''}
                                     onClick={() => setPage('accounts')}
                                 >
                                     Accounts
-                                </p>
+                                </p> */}
 
-                                <p
+                                {/* <p
                                     className={page === 'settings' ? 'active' : ''}
                                     onClick={() => setPage('settings')}
                                 >
                                     Settings
-                                </p>
+                                </p> */}
                             </nav>
                         </div>
 
