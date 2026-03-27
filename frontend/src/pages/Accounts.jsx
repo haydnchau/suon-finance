@@ -71,7 +71,7 @@ export default function Accounts({
     try {
       const user = JSON.parse(localStorage.getItem("currentUser"));
 
-      const res = await fetch("http://localhost:5000/api/accounts", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/accounts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

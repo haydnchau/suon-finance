@@ -137,7 +137,7 @@ export default function Dashboard({ initialBalances, transactions, setTransactio
     try {
         const user = JSON.parse(localStorage.getItem("currentUser"));
 
-        await fetch(`http://localhost:5000/api/transactions/${id}`, {
+        await fetch(`${import.meta.env.VITE_API_URL}/api/transactions/${id}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${user.token}`
@@ -220,7 +220,7 @@ export default function Dashboard({ initialBalances, transactions, setTransactio
                 try {
                     const user = JSON.parse(localStorage.getItem("currentUser"));
 
-                    const res = await fetch("http://localhost:5000/api/transactions", {
+                    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/transactions`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
