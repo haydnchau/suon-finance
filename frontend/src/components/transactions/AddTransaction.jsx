@@ -11,7 +11,7 @@ export default function AddTransaction({ onAdd, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // ❗ REQUIRED FIELDS
+    // required fields validation
     if (!form.description || !form.amount) {
       alert('Description and amount are required');
       return;
@@ -22,7 +22,7 @@ export default function AddTransaction({ onAdd, onClose }) {
     onAdd({
       ...form,
       amount: Number(form.amount),
-      date: form.date || today, // ✅ auto-fill date
+      date: form.date || today, // auto-fill date if left blank
     });
   };
 
@@ -56,7 +56,6 @@ export default function AddTransaction({ onAdd, onClose }) {
           }
         />
 
-        {/* 🔥 account instead of category */}
         <select
           value={form.account}
           onChange={(e) =>

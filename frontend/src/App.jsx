@@ -48,7 +48,7 @@ function App() {
     };
 
     fetchBalances();
-    }, [user]); // 🔥 THIS is key
+    }, [user]);
     
     const [transactions, setTransactions] = useState([]);
 
@@ -56,7 +56,7 @@ function App() {
         if (!user) return;
 
         const fetchTransactions = async () => {
-            const res = await fetch("http://localhost:5000/api/transactions", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/transactions`, {
             headers: {
                 Authorization: `Bearer ${user.token}`
             }
@@ -72,12 +72,12 @@ function App() {
     return (
         <div className={user ? "app" : "app auth-mode"}>
             {!user ? (
-                // 🌙 AUTH MODE
+                // Authentication page (login/register)
                 <div className="auth-page">
                     <Auth onLogin={setUser} />
                 </div>
             ) : (
-                // 🌞 APP MODE
+                // Main app
                 <>
                     <aside className="sidebar">
                         <div>
@@ -101,14 +101,16 @@ function App() {
                                     Accounts
                                 </p> */}
 
-                                {/* <p
+                                <p
                                     className={page === 'settings' ? 'active' : ''}
                                     onClick={() => setPage('settings')}
                                 >
                                     Settings
-                                </p> */}
+                                </p>
                             </nav>
                         </div>
+
+                        {/* Profile section in the sidebar */}
 
                         <div className="profile-section">
                             <div
@@ -148,6 +150,8 @@ function App() {
                         </div>
                     </aside>
 
+                    // main content that is to be rendered (dashboard)
+
                     <main className="main">
                         {page === 'dashboard' && (
                             <Dashboard
@@ -157,13 +161,13 @@ function App() {
                             />
                         )}
 
-                        {page === 'accounts' && (
+                        {/* {page === 'accounts' && (
                         <Accounts
                             initialBalances={initialBalances}
                             setInitialBalances={setInitialBalances}
-                            transactions={transactions}   // 🔥 THIS LINE
+                            transactions={transactions} 
                         />
-                        )}
+                        )} */}
                     </main>
                 </>
             )}

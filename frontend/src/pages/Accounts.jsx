@@ -6,7 +6,7 @@ const formatVND = (num) => {
   return new Intl.NumberFormat('vi-VN').format(num);
 };
 
-// 🌿 Account Row
+// account row
 function AccountRow({ label, keyName, temp, setTemp, editing, total }) {
   const getPercent = (value) => {
     if (total === 0) return 0;
@@ -47,7 +47,7 @@ export default function Accounts({
     setTemp(initialBalances);
   }, [initialBalances]);
 
-  // 🌊 live balances
+  // live balances
   const balances = {
     checking: initialBalances.checking || 0,
     savings: initialBalances.savings || 0,
@@ -105,10 +105,10 @@ export default function Accounts({
     <div>
       <h1 style={{ marginBottom: '10px' }}>Accounts</h1>
 
-      {/* 🌟 MAIN CARD (merged everything) */}
+      {/* main */}
       <div className="accounts-card">
 
-        {/* TOP BAR INSIDE CARD */}
+        {/* title */}
         <div className="top-bar" style={{ marginBottom: '10px' }}>
           <div>
             <p className="acc-label">Total Balance</p>
@@ -122,7 +122,7 @@ export default function Accounts({
           )}
         </div>
 
-        {/* ACCOUNT BREAKDOWN */}
+        {/* accounts breakdown */}
         <AccountRow label="Checking" keyName="checking" temp={temp} setTemp={setTemp} editing={editing} total={total} />
         <AccountRow label="Savings" keyName="savings" temp={temp} setTemp={setTemp} editing={editing} total={total} />
         <AccountRow label="Cash" keyName="cash" temp={temp} setTemp={setTemp} editing={editing} total={total} />
@@ -130,7 +130,7 @@ export default function Accounts({
 
       </div>
 
-      {/* 📊 CHARTS */}
+      {/* charts */}
       <div style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
 
         <div className="chart-card">

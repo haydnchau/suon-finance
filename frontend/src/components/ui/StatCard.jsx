@@ -1,3 +1,5 @@
+// load value with applied css
+// incrasing reusability and keeping fonts, layouts consistent
 export default function StatCard({ title, value, type }) {
   return (
     <div className="stat-card">

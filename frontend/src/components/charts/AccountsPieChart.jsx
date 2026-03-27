@@ -4,7 +4,7 @@ export default function AccountsPieChart({ initialBalances, transactions = [] })
 
   const accounts = ['checking', 'savings', 'cash', 'investments'];
 
-  // 🛑 safety (prevents crash)
+  // preventing errors before data loads or if user has no data
   if (!initialBalances) {
     return <p style={{ opacity: 0.6 }}>No data yet...</p>;
   }

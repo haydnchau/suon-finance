@@ -14,7 +14,7 @@ export default function Auth({ onLogin }) {
 
     try {
       if (isLogin) {
-        // 🌙 LOGIN
+        // login 
         const res = await fetch(`${import.meta.env.VITE_API_URL}/api/users/login`, {
           method: "POST",
           headers: {
@@ -37,7 +37,7 @@ export default function Auth({ onLogin }) {
         onLogin(data);
 
       } else {
-        // 🌿 REGISTER
+        // register
 
         const cleanUsername = form.username?.trim().toLowerCase();
         const usernameRegex = /^[a-z][a-z0-9]*$/;

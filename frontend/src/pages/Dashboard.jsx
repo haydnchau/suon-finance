@@ -14,7 +14,7 @@ const accounts = ['checking','savings','cash','investments'];
 const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const dayNames = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 
-// 🔥 STEP 1: SORT TRANSACTIONS BY DATE
+// sort transaction by date
 const sorted = [...transactions].sort(
     (a, b) => new Date(a.date) - new Date(b.date)
 );
@@ -26,12 +26,12 @@ sorted.forEach(tx => {
     const date = new Date(tx.date);
     let key;
 
-    // 🟢 WEEK = last 7 days (not all Mondays ever)
+    // 7 days in thhe week
     if (filterType === 'week') {
     key = dayNames[(date.getDay() + 6) % 7]; // convert Sun-first → Mon-first
     }
 
-    // 🟡 MONTH = 1–7, 8–14, etc
+    // month so showing specific date ranges
     else if (filterType === 'month') {
     const day = date.getDate();
     const start = Math.floor((day - 1) / 7) * 7 + 1;
@@ -39,12 +39,12 @@ sorted.forEach(tx => {
     key = `${monthNames[date.getMonth()]} ${start}-${end}`;
     }
 
-    // 🔵 YEAR = months
+    // years so showing month
     else if (filterType === 'year') {
     key = monthNames[date.getMonth()];
     }
 
-    // ⚫ ALL = years
+    // all time = years
     else {
     key = `${date.getFullYear()}`;
     }
@@ -56,7 +56,7 @@ sorted.forEach(tx => {
     buckets[key] = { ...running };
 });
 
-// 🔥 STEP 2: DEFINE X AXIS ORDER
+// defining x axis labels based on filter type
 let xAxis = [];
 
 if (filterType === 'week') {
@@ -75,7 +75,6 @@ else {
     xAxis = Object.keys(buckets).sort();
 }
 
-// 🔥 STEP 3: BUILD SERIES
 let series;
 
 if (viewType === 'total') {
@@ -122,7 +121,7 @@ export default function Dashboard({ initialBalances, transactions, setTransactio
     const [chartFilter, setChartFilter] = useState('week');
     const [chartView, setChartView] = useState('accounts'); // 'accounts' or 'total'
 
-    // 🔥 FILTER STATE
+    // filtering state
     const [filters, setFilters] = useState({
         type: 'all',
         value: '',
@@ -130,9 +129,9 @@ export default function Dashboard({ initialBalances, transactions, setTransactio
     });
 
     const deleteTransaction = async (id) => {
-    console.log("🧨 DELETE CLICKED ID:", id);
+    console.log("delete button clicked, id:", id);
 
-    if (!id) return; // 🔥 PREVENT BAD CALL
+    if (!id) return;
 
     try {
         const user = JSON.parse(localStorage.getItem("currentUser"));
@@ -151,7 +150,7 @@ export default function Dashboard({ initialBalances, transactions, setTransactio
     }
     };
 
-    // 🔥 FILTER LOGIC
+    // filter logic
     const filteredTransactions = transactions.filter(tx => {
         const txDate = new Date(tx.date);
 
@@ -231,7 +230,7 @@ export default function Dashboard({ initialBalances, transactions, setTransactio
 
                     const newTx = await res.json();
 
-                    setTransactions(prev => [newTx, ...prev]); // 🔥 THIS LINE
+                    setTransactions(prev => [newTx, ...prev]);
                     setShowForm(false);
 
                 } catch (err) {
@@ -250,8 +249,8 @@ export default function Dashboard({ initialBalances, transactions, setTransactio
         </div>
 
         <div style={{ display: 'flex', gap: '20px' }}>
-        
-        {/* LEFT: LINE CHART */}
+
+        {/* {line chart} */}
         <div className="chart-card" style={{ flex: 1 }}>
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
@@ -284,7 +283,7 @@ export default function Dashboard({ initialBalances, transactions, setTransactio
             />
         </div>
 
-        {/* RIGHT: PIE CHART */}
+        {/* {pie chart} */}
         <div className="chart-card" style={{ flex: 1 }}>
             <h3 className="chart-title">Account Distribution</h3>
             <AccountsPieChart 
@@ -293,7 +292,7 @@ export default function Dashboard({ initialBalances, transactions, setTransactio
                 />
         </div>
         </div>
-        {/* 🔥 FILTER UI */}
+        {/* transaction history filters */}
         <div className="filters">
             <select
             value={filters.type}
@@ -347,7 +346,7 @@ export default function Dashboard({ initialBalances, transactions, setTransactio
             <option value="cash">Cash</option>
             </select>
 
-            {/* 🔥 RESET BUTTON */}
+            {/* reset filters */}
             <button
             onClick={() =>
                 setFilters({ type: 'all', value: '', account: 'all' })
@@ -369,9 +368,9 @@ export default function Dashboard({ initialBalances, transactions, setTransactio
             transactions={filteredTransactions}
             onDelete={deleteTransaction}
             formatVND={formatVND}
-            onSelect={setSelectedTx}   // 🔥 THIS
+            onSelect={setSelectedTx}
         />
-        {/* 🔥 MODAL */}
+
         {selectedTx && (
             <div className="modal-overlay" onClick={() => setSelectedTx(null)}>
                 <div className="modal" onClick={(e) => e.stopPropagation()}>

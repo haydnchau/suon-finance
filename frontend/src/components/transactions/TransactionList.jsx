@@ -19,7 +19,7 @@ export default function TransactionList({ transactions, onDelete, formatVND, onS
                 style={{ cursor: 'pointer' }}
               >
 
-              {/* LEFT SIDE */}
+              {/* left side */}
               <div className="left">
                 <p className="desc" title={tx.description}>
                   {tx.description}
@@ -33,7 +33,7 @@ export default function TransactionList({ transactions, onDelete, formatVND, onS
                 </div>
               </div>
 
-              {/* RIGHT SIDE */}
+              {/* right side */}
               <div className="right">
                 <p
                   className="amount"

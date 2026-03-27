@@ -27,7 +27,7 @@ body {
   color: white;
   width: 220px;
 
-  position: fixed;   /* 🔥 THIS IS THE REAL FIX */
+  position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
@@ -50,10 +50,10 @@ body {
   position: absolute;
   bottom: 16px;
 
-  width: 100%;              /* 🔥 FULL WIDTH */
+  width: 100%;
   left: 0;
 
-  padding: 10px 16px;       /* 🔥 match sidebar padding */
+  padding: 10px 16px;
 
   box-sizing: border-box;
 
@@ -61,7 +61,7 @@ body {
   background: rgba(255,255,255,0.02);
 
   border-radius: 10px;
-  margin: 0 8px; /* slight inset */
+  margin: 0 8px;
 }
 
 .profile-main {
@@ -69,7 +69,7 @@ body {
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  width: 100%; /* 🔥 ensures full alignment */
+  width: 100%;
 }
 
 .avatar {
@@ -90,14 +90,14 @@ body {
 .name {
   margin: 0;
   font-size: 14px;
-  line-height: 1.2; /* 🔥 tighter */
+  line-height: 1.2;
 }
 
 .email {
   margin: 0;
-  font-size: 11px;  /* slightly smaller */
+  font-size: 11px;
   color: #bfbfbf;
-  line-height: 1.2; /* 🔥 tighter */
+  line-height: 1.2;
 }
 
 .arrow {
@@ -108,8 +108,8 @@ body {
 .profile-dropdown {
   position: absolute;
 
-  bottom: 100%;          /* 🔥 attach to TOP of profile */
-  margin-bottom: 8px;    /* small gap */
+  bottom: 100%;
+  margin-bottom: 8px;
 
   left: 0;
   width: 100%;
@@ -148,7 +148,7 @@ body {
 .main {
   flex: 1;
   padding: 24px;
-  margin-left: 252px; /* 🔥 220 + 16 + 16 */
+  margin-left: 252px;
   padding: 24px;
 }
 
@@ -218,7 +218,7 @@ form input {
   width: 200px;
 }
 
-/* 🔥 FORCE ALL CHART TEXT TO WHITE */
+/* forcing all the text to be white cuz the Mui charts is hella weird */
 
 .MuiChartsLegend-root text {
   fill: #ffffff !important;
@@ -232,7 +232,6 @@ form input {
   fill: #ffffff !important;
 }
 
-/* sometimes legend uses spans */
 .MuiChartsLegend-root {
   color: #ffffff !important;
 }
@@ -249,7 +248,7 @@ form input {
   align-items: center;
   justify-content: center;
 
-  z-index: 9999; /* 🔥 THIS IS THE KEY */
+  z-index: 9999;
 }
 
 .modal {
@@ -258,7 +257,7 @@ form input {
   border-radius: 12px;
   width: 260px;
 
-  z-index: 10000; /* optional but safe */
+  z-index: 10000;
 }
 
 .transaction-group {
@@ -292,14 +291,12 @@ form input {
   border-bottom: none;
 }
 
-/* 🔥 fix long text */
 .desc {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-/* smaller spacing */
 .transaction-row p {
   margin: 0;
   font-size: 14px;
@@ -322,7 +319,6 @@ form input {
   border-bottom: none;
 }
 
-/* LEFT SIDE */
 .left {
   display: flex;
   flex-direction: column;
@@ -343,7 +339,6 @@ form input {
   color: var(--text-secondary);
 }
 
-/* RIGHT SIDE */
 .right {
   display: flex;
   align-items: center;
@@ -366,7 +361,6 @@ form input {
   color: var(--text-secondary);
 }
 
-/* 🔥 BADGE BASE */
 .badge {
   font-size: 11px;
   padding: 2px 6px;
@@ -374,7 +368,6 @@ form input {
   text-transform: capitalize;
 }
 
-/* 🎨 DIFFERENT COLORS */
 .badge.checking {
   background: rgba(108, 123, 255, 0.2);
   color: #6C7BFF;
@@ -410,13 +403,11 @@ form input {
   flex-wrap: wrap;
 }
 
-
-/* Add this to your CSS */
 .filters {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #1e293b; /* Match your dashboard card color */
+  background: #1e293b;
   padding: 15px;
   border-radius: 8px;
   margin-top: 20px;
@@ -468,7 +459,7 @@ form input {
 }
 
 .auth-page {
-  height: 100vh;              /* 🔥 THIS is what you're missing */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -516,7 +507,7 @@ form input {
 }
 
 .app.auth-mode {
-  display: block; /* 🔥 disable flex */
+  display: block;
 }
 
 .accounts-card {
