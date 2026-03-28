@@ -9,6 +9,14 @@ const accountSchema = new mongoose.Schema({
   checking: { type: Number, default: 0 },
   savings: { type: Number, default: 0 },
   cash: { type: Number, default: 0 },
+  savingsList: [
+    {
+      amount: Number,
+      accountNumber: String,
+      interest: Number,
+      maturity: Date
+    }
+  ],
   investments: { type: Number, default: 0 }
 }, { timestamps: true });
 

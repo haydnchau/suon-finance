@@ -4,7 +4,6 @@ import { protect } from "../middleware/auth.js";
 
 const router = express.Router();
 
-// 🔥 GET user accounts
 router.get("/", protect, async (req, res) => {
   try {
     const account = await Account.findOne({ user: req.user._id });
@@ -24,30 +23,29 @@ router.get("/", protect, async (req, res) => {
   }
 });
 
-// 🔥 CREATE / UPDATE accounts
-router.post("/", protect, async (req, res) => {
-  try {
-    let account = await Account.findOne({ user: req.user._id });
+router.post('/', protect, async (req, res) => {
+  const { checking, savings, cash, savingsList } = req.body;
 
-    if (account) {
-      // update
-      account.checking = req.body.checking;
-      account.savings = req.body.savings;
-      account.cash = req.body.cash;
-      account.investments = req.body.investments;
+  let account = await Account.findOne({ user: req.user._id });
 
-      await account.save();
-    } else {
-      // create
-      account = await Account.create({
-        user: req.user._id,
-        ...req.body
-      });
-    }
+  if (account) {
+    account.checking = checking;
+    account.savings = savings;
+    account.cash = cash;
+    account.savingsList = savingsList || [];
+
+    await account.save();
+    res.json(account);
+  } else {
+    account = await Account.create({
+      user: req.user._id,
+      checking,
+      savings,
+      cash,
+      savingsList
+    });
 
     res.json(account);
-  } catch (err) {
-    res.status(500).json({ message: "Server error" });
   }
 });
 

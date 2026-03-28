@@ -5,6 +5,7 @@ import { connectDB } from './config/db.js';
 import cors from 'cors';
 import accountRoutes from './routes/accountRoutes.js';
 import transactionRoutes from './routes/transactionRoutes.js';
+import savingsRoutes from './routes/savingsRoutes.js'
 
 dotenv.config();
 
@@ -31,6 +32,8 @@ app.use("/api/users", router);
 app.use("/api/accounts", accountRoutes);
 
 app.use("/api/transactions", transactionRoutes);
+
+app.use("/api/savings", savingsRoutes);
 
 connectDB();
 
