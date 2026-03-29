@@ -44,7 +44,7 @@ const handleRegister = async () => {
 };
 
 export const protect = async (req, res, next) => {
-    console.log("Protect middleware called");
+    // console.log("Protect middleware called");
     let token;
 
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
