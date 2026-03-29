@@ -1,11 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import router from './routes/router.js';
+import auth from './routes/auth.js';
 import { connectDB } from './config/db.js';
 import cors from 'cors';
 import accountRoutes from './routes/accountRoutes.js';
 import transactionRoutes from './routes/transactionRoutes.js';
-import savingsRoutes from './routes/savingsRoutes.js'
+import savingsRoutes from './routes/savingsRoutes.js';
 
 dotenv.config();
 
@@ -27,12 +27,9 @@ app.get('/', (req, res) => {
     res.status(200).json({ message: 'API is running' });
 });
 
-app.use("/api/users", router);
-
+app.use("/api/users", auth);
 app.use("/api/accounts", accountRoutes);
-
 app.use("/api/transactions", transactionRoutes);
-
 app.use("/api/savings", savingsRoutes);
 
 connectDB();
