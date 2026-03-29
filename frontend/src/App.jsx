@@ -4,6 +4,7 @@ import Auth from './pages/Auth';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import './App.css';
+import suonLogo from './assets/Suon.png';
 
 function App() {
     const [openProfile, setOpenProfile] = useState(false);
@@ -15,6 +16,8 @@ function App() {
     cash: 0,
     investments: 0
     });
+
+    const [savingsList, setSavingsList] = useState([]);
 
     const [user, setUser] = useState(
         JSON.parse(localStorage.
@@ -35,12 +38,13 @@ function App() {
         const data = await res.json();
 
         if (data) {
-            setInitialBalances({
+        setInitialBalances({
             checking: data.checking || 0,
             savings: data.savings || 0,
-            cash: data.cash || 0,
-            investments: data.investments || 0
-            });
+            cash: data.cash || 0
+        });
+
+        setSavingsList(data.savingsList || []);
         }
         } catch (err) {
         console.error(err);
@@ -81,9 +85,9 @@ function App() {
                 <>
                     <aside className="sidebar">
                         <div>
-                            <h2>
-                            🐾 {(user?.firstName || "User").toUpperCase()} {(user?.lastName?.charAt(0) || "").toUpperCase()}.
-                            {console.log(user)}
+                            <h2 className="logo">
+                                <img src={suonLogo} alt="Suon Logo" className="logo-img" /> {(user?.firstName || "User").toUpperCase()} {(user?.lastName?.charAt(0) || "").toUpperCase()}.
+                                {console.log(user)}
                             </h2>
 
                             <nav>
@@ -94,18 +98,11 @@ function App() {
                                     Dashboard
                                 </p>
 
-                                {/* <p
+                                <p
                                     className={page === 'accounts' ? 'active' : ''}
                                     onClick={() => setPage('accounts')}
                                 >
                                     Accounts
-                                </p> */}
-
-                                <p
-                                    className={page === 'settings' ? 'active' : ''}
-                                    onClick={() => setPage('settings')}
-                                >
-                                    Settings
                                 </p>
                             </nav>
                         </div>
@@ -161,13 +158,15 @@ function App() {
                             />
                         )}
 
-                        {/* {page === 'accounts' && (
-                        <Accounts
+                        {page === 'accounts' && (
+                            <Accounts
                             initialBalances={initialBalances}
                             setInitialBalances={setInitialBalances}
-                            transactions={transactions} 
-                        />
-                        )} */}
+                            transactions={transactions}
+                            savingsList={savingsList}
+                            setSavingsList={setSavingsList}
+                            />
+                        )}
                     </main>
                 </>
             )}

@@ -1,9 +1,22 @@
 import express from "express";
 import User from "../models/User.js";
 import { protect } from "../middleware/auth.js";
+import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken";
 
 const router = express.Router();
+
+router.post('/verify-password', protect, async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  const isMatch = await bcrypt.compare(req.body.password, user.password);
+
+  if (isMatch) {
+    res.json({ success: true });
+  } else {
+    res.status(401).json({ message: "Incorrect password" });
+  }
+});
 
 // Register
 router.post("/register", async (req, res) => {

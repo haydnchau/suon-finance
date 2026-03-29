@@ -46,9 +46,28 @@ body {
   color: white;
 }
 
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* REMOVE spacing */
+}
+
+.sidebar nav p {
+  margin: 0;
+  padding: 14px 20px;
+  border-radius: 0 8px 8px 0; /* remove pill */
+  border-left: 3px solid transparent;
+  transition: 0.2s;
+}
+
+.sidebar nav p:hover {
+  background: rgba(255,255,255,0.08);
+  border-left: 3px solid #3b82f6;
+}
+
 .profile-section {
   position: absolute;
-  bottom: 16px;
+  bottom: 40px;
 
   width: 100%;
   left: 0;
@@ -557,4 +576,264 @@ form input {
   background: var(--bg-card-inner);
   padding: 16px;
   border-radius: 12px;
+}
+
+.settings-card {
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.save-btn {
+  background: #3b82f6;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.save-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.save-wide {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: white;
+  margin-top: 20px;
+}
+
+.message.success {
+  color: #4ade80;
+}
+
+.message.error {
+  color: #f87171;
+}
+
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.dropdown-header.small {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.dropdown-content {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.savings-item {
+  background: rgba(255,255,255,0.03);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.save-wide {
+  margin-top: 10px;
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.message.success {
+  color: #4ade80;
+}
+
+.message.error {
+  color: #f87171;
+}
+
+.accounts-summary.clickable {
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+}
+
+.accounts-summary.clickable:hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-2px);
+}
+
+.hint {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.account-row.clickable:hover {
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+}
+
+.savings-container {
+  background: rgba(255,255,255,0.03);
+  padding: 16px;
+  border-radius: 14px;
+  margin-top: 12px;
+  animation: fadeIn 0.2s ease;
+}
+
+.savings-card {
+  background: rgba(255,255,255,0.05);
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.savings-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amount {
+  font-weight: 600;
+}
+
+.savings-details {
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.future {
+  margin-top: 5px;
+  color: #60a5fa;
+}
+
+.savings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.add-btn {
+  padding: 10px;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: white;
+  margin-top: 6px;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #f87171;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.accounts-expanded {
+  background: rgba(255,255,255,0.04);
+  padding: 18px;
+  border-radius: 16px;
+  margin-top: 12px;
+}
+
+.account-row input {
+  background: rgba(255,255,255,0.06);
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: white;
+}
+
+.open-modal-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: white;
+}
+
+.edit-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.modal {
+  background: #111;
+  padding: 24px;
+  border-radius: 16px;
+  width: 320px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.modal input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: #1a1a1a;
+  color: white;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.cancel-btn {
+  background: transparent;
+  border: 1px solid #555;
+  color: #aaa;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+.confirm-btn {
+  background: #4f46e5;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.confirm-btn:hover {
+  background: #6366f1;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }

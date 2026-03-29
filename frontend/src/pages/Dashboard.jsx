@@ -179,11 +179,11 @@ export default function Dashboard({ initialBalances, transactions, setTransactio
 
     // totals (use filtered if you want dynamic stats later)
     const totalBalance =
-        initialBalances.checking +
-        initialBalances.savings +
-        initialBalances.cash +
-        initialBalances.investments +
-        transactions.reduce((sum, t) => sum + t.amount, 0);
+        (initialBalances.checking || 0) +
+        (initialBalances.savings || 0) +
+        (initialBalances.cash || 0) +
+        (initialBalances.investments || 0) +
+        transactions.reduce((sum, t) => sum + (t.amount || 0), 0);
 
     const income = filteredTransactions
         .filter(t => t.amount > 0)

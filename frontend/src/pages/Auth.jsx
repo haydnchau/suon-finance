@@ -40,10 +40,10 @@ export default function Auth({ onLogin }) {
         // register
 
         const cleanUsername = form.username?.trim().toLowerCase();
-        const usernameRegex = /^[a-z][a-z0-9]*$/;
+        const usernameRegex = /^[a-z0-9]*$/;
 
         if (!usernameRegex.test(cleanUsername)) {
-          setError("Username must start with a letter and contain only lowercase letters and numbers. NO spaces in between pls blud.");
+          setError("Username must contain only letters and numbers. NO spaces in between pls blud.");
           return;
         }
 

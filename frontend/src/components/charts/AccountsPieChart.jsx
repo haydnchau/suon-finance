@@ -9,7 +9,7 @@ export default function AccountsPieChart({ initialBalances, transactions = [] })
     return <p style={{ opacity: 0.6 }}>No data yet...</p>;
   }
 
-  // 🌊 calculate live balances
+  // calculate live balances
   const balances = { ...initialBalances };
 
   transactions.forEach(tx => {
@@ -17,7 +17,7 @@ export default function AccountsPieChart({ initialBalances, transactions = [] })
     balances[tx.account] += tx.amount;
   });
 
-  // 🧠 total for percentages
+  // total for percentages
   const total = Object.values(balances).reduce((a, b) => a + b, 0);
 
   const data = accounts.map((acc, index) => {
