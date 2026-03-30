@@ -6,7 +6,7 @@ import { protect } from "../middleware/auth.js";
 const router = express.Router();
 
 
-// ✅ GET ALL TRANSACTIONS
+// get transactions
 router.get("/", protect, async (req, res) => {
   try {
     const transactions = await Transaction.find({ user: req.user._id })
@@ -19,7 +19,7 @@ router.get("/", protect, async (req, res) => {
 });
 
 
-// ✅ CREATE TRANSACTION
+// creating transaction
 router.post("/", protect, async (req, res) => {
   try {
     const { description, amount, account, date } = req.body;
@@ -39,7 +39,7 @@ router.post("/", protect, async (req, res) => {
 });
 
 
-// ✅ DELETE TRANSACTION
+// delete
 router.delete("/:id", protect, async (req, res) => {
   const { id } = req.params;
 
