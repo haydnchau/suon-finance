@@ -124,11 +124,6 @@ function App() {
                                     </p>
                                     <p className="email">{user.email}</p>
                                 </div>
-                                {user?.dob && (
-                                <p className="email">
-                                    DOB: {new Date(user.dob).toLocaleDateString()}
-                                </p>
-                                )}
                             </div>
 
                             {openProfile && (
