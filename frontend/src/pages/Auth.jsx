@@ -91,7 +91,7 @@ export default function Auth({ onLogin }) {
         </>
       )}
 
-      <input placeholder="Email or Username" onChange={e => handleChange('email', e.target.value)} />
+      <input placeholder="Email" onChange={e => handleChange('email', e.target.value)} />
       <input type="password" placeholder="Password" onChange={e => handleChange('password', e.target.value)} />
 
       {!isLogin && (

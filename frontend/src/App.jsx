@@ -87,7 +87,6 @@ function App() {
                         <div>
                             <h2 className="logo">
                                 <img src={suonLogo} alt="Suon Logo" className="logo-img" /> {(user?.firstName || "User").toUpperCase()} {(user?.lastName?.charAt(0) || "").toUpperCase()}.
-                                {console.log(user)}
                             </h2>
 
                             <nav>
