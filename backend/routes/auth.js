@@ -26,8 +26,6 @@ router.post("/register", async (req, res) => {
           return res.status(400).json({ message: "Please fill all the fields" });
       }
 
-      console.log(username, email, password);
-
       const userExists = await User.findOne({
           $or: [{ email }, { username }]
       });
