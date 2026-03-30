@@ -219,24 +219,6 @@ body {
   width: 400px;
 }
 
-form {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--bg-card);
-  padding: 20px;
-  border-radius: 12px;
-  z-index: 10;
-}
-
-form input {
-  display: block;
-  margin-bottom: 10px;
-  padding: 8px;
-  width: 200px;
-}
-
 /* forcing all the text to be white cuz the Mui charts is hella weird */
 
 .MuiChartsLegend-root text {
@@ -485,44 +467,68 @@ form input {
 }
 
 .auth-card {
-  background: #1e293b;
-  padding: 30px;
+  width: 360px;
+  background: var(--bg-card);
+  padding: 24px;
   border-radius: 16px;
-  width: 350px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.auth-card h1 {
-  text-align: center;
-  margin-bottom: 10px;
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.auth-card input,
-.auth-card select {
-  padding: 10px;
+.auth-card input {
+  padding: 10px 12px;
   border-radius: 8px;
-  border: none;
+  border: 1px solid #2a2f45;
+  background: #0f172a;
+  color: white;
   outline: none;
 }
 
+.auth-card input:focus {
+  border-color: #60A5FA;
+}
+
 .auth-card button {
-  padding: 12px;
+  margin-top: 6px;
+  padding: 10px;
   border-radius: 8px;
   border: none;
-  background: #6C7BFF;
+  background: #60A5FA;
   color: white;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 500;
+}
+
+.auth-card button:hover {
+  opacity: 0.9;
 }
 
 .auth-switch {
+  margin-top: 10px;
   text-align: center;
   cursor: pointer;
+  color: #60A5FA;
   font-size: 14px;
-  opacity: 0.8;
+  opacity: 0.9;
+}
+
+.auth-switch:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.auth-card input:focus {
+  border-color: #60A5FA;
+  box-shadow: 0 0 0 1px #60A5FA;
 }
 
 .app.auth-mode {

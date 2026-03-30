@@ -81,30 +81,39 @@ export default function Auth({ onLogin }) {
 
   return (
     <div className="auth-card">
-      <h1>{isLogin ? 'Welcome Back' : 'Create Account'}</h1>
-
       {!isLogin && (
-        <>
+        <form onSubmit={(e) => {
+          e.preventDefault(); // 🔥 stops page refresh
+          handleSubmit();
+        }}>
+          <h1>Create Account</h1>
           <input placeholder="First Name" onChange={e => handleChange('firstName', e.target.value)} />
           <input placeholder="Last Name" onChange={e => handleChange('lastName', e.target.value)} />
           <input placeholder="Username" onChange={e => handleChange('username', e.target.value)} />
-        </>
+          <input placeholder="Email" onChange={e => handleChange('email', e.target.value)} />
+          <input type="password" placeholder="Password" onChange={e => handleChange('password', e.target.value)} />
+          <input type="date" onChange={e => handleChange('dob', e.target.value)} />
+          <button onClick={handleSubmit}>
+            Register
+          </button>
+        </form>
       )}
 
-      <input placeholder="Email" onChange={e => handleChange('email', e.target.value)} />
-      <input type="password" placeholder="Password" onChange={e => handleChange('password', e.target.value)} />
-
-      {!isLogin && (
-        <>
-          <input type="date" onChange={e => handleChange('dob', e.target.value)} />
-        </>
+      {isLogin && (
+        <form onSubmit={(e) => {
+          e.preventDefault(); // 🔥 stops page refresh
+          handleSubmit();
+        }}>
+          <h1>Welcome Back</h1>
+          <input placeholder="Email" onChange={e => handleChange('email', e.target.value)} />
+          <input type="password" placeholder="Password" onChange={e => handleChange('password', e.target.value)} />
+          <button onClick={handleSubmit}>
+            Login
+          </button>
+        </form>
       )}
 
       {error && <p style={{ color: '#f87171' }}>{error}</p>}
-
-      <button onClick={handleSubmit}>
-        {isLogin ? 'Login' : 'Register'}
-      </button>
 
       <p
         className="auth-switch"
